@@ -2,6 +2,8 @@
 
 AgriAssist-LLM is a fine-tuned large language model based on Llama3.2:1B, specifically designed to provide detailed, actionable information about plant diseases to Indian farmers. It offers clear, concise, and locally relevant guidance on disease identification, symptoms, causes, severity, and treatment measures across major crops such as Sugarcane, Maize, Cotton, Rice, and Wheat.
 
+[![Hugging Face Model Card](https://img.shields.io/badge/Hugging%20Face-Model%20Card-orange)](https://huggingface.co/sikeaditya/agri_assist_llm)
+
 ## Features
 
 - **Tailored Guidance:** Provides comprehensive details on various plant diseases affecting Indian crops.
