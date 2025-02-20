@@ -62,6 +62,9 @@ curl -fsSL https://ollama.ai/install.sh | sh
 ```
 
 2. Pull the model from Hugging Face and convert it to an Ollama-compatible format.
+```bash
+ollama run hf.co/sikeaditya/agri_assist_llm
+```
 
 3. Run the model using Ollama:
 
