@@ -13,11 +13,22 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - name: Restore Hugging Face README
-        run: |
-          cp README_hf.md README.md
-      - name: Push to Hugging Face
+
+      - name: Add Hugging Face remote
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git push --force https://sikeaditya:$HF_TOKEN@huggingface.co/sikeaditya/AgriAssist_LLM main
+          git remote add hf https://sikeaditya:$HF_TOKEN@huggingface.co/sikeaditya/AgriAssist_LLM || true
+          git fetch hf
+
+      - name: Restore Hugging Face README (if needed)
+        run: |
+          git checkout hf/main -- README.md || echo "No README.md in HF repo"
+
+      - name: Remove binary files not needed on Hugging Face
+        run: rm -f "cover photo.png"
+
+      - name: Push to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: git push --force hf main
