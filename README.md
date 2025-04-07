@@ -1,8 +1,60 @@
+---
+title: "AgriAssist-LLM: Plant Disease Information Assistant"
+description: "AgriAssist-LLM is a fine-tuned large language model based on Llama3.2:1B, designed to assist Indian farmers with plant disease identification and management."
+version: "1.0"
+author: "Sike Aditya"
+repository: "https://huggingface.co/sikeaditya/agri_assist_llm"
+tags:
+  - Agriculture
+  - Plant Disease
+  - LLM
+  - AI
+  - India
+model:
+  base: "meta/Llama3.2:1B"
+  fine_tuning_dataset: "1000 samples focusing on plant diseases in Indian agriculture"
+  format: "Alpaca Instruct Format"
+usage:
+  - "Farmers"
+  - "Agronomists"
+  - "Agricultural extension workers"
+installation:
+  ollama: "curl -fsSL https://ollama.ai/install.sh | sh"
+usage_examples:
+  - command: "ollama run AgriAssist-LLM 'Explain Red Rot in sugarcane in simple terms for Indian farmers.'"
+    description: "Provides an easy-to-understand explanation of Red Rot disease in sugarcane."
+dataset:
+  crops:
+    Sugarcane:
+      - "Bacterial Blight"
+      - "Healthy"
+      - "Red Rot"
+    Maize:
+      - "Blight"
+      - "Common Rust"
+      - "Gray Leaf Spot"
+      - "Healthy"
+    Cotton:
+      - "Bacterial Blight"
+      - "Curl Virus"
+      - "Fusarium Wilt"
+      - "Healthy"
+    Rice:
+      - "Bacterial Blight"
+      - "Blast"
+      - "Brownspot"
+      - "Tungro"
+    Wheat:
+      - "Healthy"
+      - "Septoria"
+      - "Strip Rust"
+contact:
+  email: "sikeaditya@example.com"
+  issues: "https://github.com/sikeaditya/agri_assist_llm/issues"
+---
 # AgriAssist-LLM: Plant Disease Information Assistant
 
 AgriAssist-LLM is a fine-tuned large language model based on Llama3.2:1B, specifically designed to provide detailed, actionable information about plant diseases to Indian farmers. It offers clear, concise, and locally relevant guidance on disease identification, symptoms, causes, severity, and treatment measures across major crops such as Sugarcane, Maize, Cotton, Rice, and Wheat.
-
-[![Hugging Face Model Card](https://img.shields.io/badge/Hugging%20Face-Model%20Card-orange)](https://huggingface.co/sikeaditya/agri_assist_llm)
 
 ## Features
 
@@ -33,18 +85,14 @@ Here’s an example of how to use AgriAssist-LLM with the Hugging Face Transform
 
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
-
 # Load the tokenizer and model from the Hugging Face Hub
 tokenizer = AutoTokenizer.from_pretrained("your-username/AgriAssist-LLM")
 model = AutoModelForCausalLM.from_pretrained("your-username/AgriAssist-LLM")
-
 # Define a prompt
 prompt = "Explain Red Rot in sugarcane in simple terms for Indian farmers."
-
 # Tokenize and generate a response
 inputs = tokenizer(prompt, return_tensors="pt")
 outputs = model.generate(**inputs, max_new_tokens=256)
-
 # Decode and print the generated response
 print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
