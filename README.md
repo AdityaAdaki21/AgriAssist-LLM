@@ -1,6 +1,6 @@
 ---
-title: "AgriAssist-LLM: Plant Disease Information Assistant"
-description: "AgriAssist-LLM is a fine-tuned large language model based on Llama3.2:1B, designed to assist Indian farmers with plant disease identification and management."
+title: "AgriLlama: Plant Disease Information Assistant"
+description: "AgriLlama is a fine-tuned large language model based on Llama3.2:1B, designed to assist Indian farmers with plant disease identification and management."
 version: "1.0"
 author: "Sike Aditya"
 repository: "https://huggingface.co/sikeaditya/agri_assist_llm"
@@ -21,7 +21,7 @@ usage:
 installation:
   ollama: "curl -fsSL https://ollama.ai/install.sh | sh"
 usage_examples:
-  - command: "ollama run AgriAssist-LLM 'Explain Red Rot in sugarcane in simple terms for Indian farmers.'"
+  - command: "ollama run AgriLlama 'Explain Red Rot in sugarcane in simple terms for Indian farmers.'"
     description: "Provides an easy-to-understand explanation of Red Rot disease in sugarcane."
 dataset:
   crops:
@@ -52,9 +52,9 @@ contact:
   email: "sikeaditya@example.com"
   issues: "https://github.com/sikeaditya/agri_assist_llm/issues"
 ---
-# AgriAssist-LLM: Plant Disease Information Assistant
+# AgriLlama: Plant Disease Information Assistant
 
-AgriAssist-LLM is a fine-tuned large language model based on Llama3.2:1B, specifically designed to provide detailed, actionable information about plant diseases to Indian farmers. It offers clear, concise, and locally relevant guidance on disease identification, symptoms, causes, severity, and treatment measures across major crops such as Sugarcane, Maize, Cotton, Rice, and Wheat.
+AgriLlama is a fine-tuned large language model based on Llama3.2:1B, specifically designed to provide detailed, actionable information about plant diseases to Indian farmers. It offers clear, concise, and locally relevant guidance on disease identification, symptoms, causes, severity, and treatment measures across major crops such as Sugarcane, Maize, Cotton, Rice, and Wheat.
 
 ## Features
 
@@ -71,7 +71,7 @@ AgriAssist-LLM is a fine-tuned large language model based on Llama3.2:1B, specif
 
 ## Installation
 
-To use AgriAssist-LLM, install the required libraries:
+To use AgriLlama, install the required libraries:
 
 ```bash
 pip install transformers torch
@@ -81,13 +81,13 @@ pip install transformers torch
 
 ### Using Hugging Face Transformers
 
-Here’s an example of how to use AgriAssist-LLM with the Hugging Face Transformers library:
+Here’s an example of how to use AgriLlama with the Hugging Face Transformers library:
 
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 # Load the tokenizer and model from the Hugging Face Hub
-tokenizer = AutoTokenizer.from_pretrained("your-username/AgriAssist-LLM")
-model = AutoModelForCausalLM.from_pretrained("your-username/AgriAssist-LLM")
+tokenizer = AutoTokenizer.from_pretrained("your-username/AgriLlama")
+model = AutoModelForCausalLM.from_pretrained("your-username/AgriLlama")
 # Define a prompt
 prompt = "Explain Red Rot in sugarcane in simple terms for Indian farmers."
 # Tokenize and generate a response
@@ -97,11 +97,11 @@ outputs = model.generate(**inputs, max_new_tokens=256)
 print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
 
-*Note:* Replace `your-username/AgriAssist-LLM` with the actual path of your repository.
+*Note:* Replace `your-username/AgriLlama` with the actual path of your repository.
 
 ### Using Ollama
 
-You can also use AgriAssist-LLM with [Ollama](https://ollama.ai), a simple way to run large language models locally.
+You can also use AgriLlama with [Ollama](https://ollama.ai), a simple way to run large language models locally.
 
 1. Install Ollama if you haven't already:
 
@@ -109,22 +109,22 @@ You can also use AgriAssist-LLM with [Ollama](https://ollama.ai), a simple way t
 curl -fsSL https://ollama.ai/install.sh | sh
 ```
 
-2. Pull the model from Hugging Face and convert it to an Ollama-compatible format.
+2. Pull the model from Ollama [Library](https://ollama.com/sike_aditya/AgriLlama)
 ```bash
-ollama run hf.co/sikeaditya/agri_assist_llm
+ollama pull sike_aditya/AgriLlama
 ```
 
 3. Run the model using Ollama:
 
 ```bash
-ollama run AgriAssist-LLM "Explain Red Rot in sugarcane in simple terms for Indian farmers."
+ollama run AgriLlama "Explain Red Rot in sugarcane in simple terms for Indian farmers."
 ```
 
 This will generate a response based on the model’s fine-tuned dataset.
 
 ## Fine-Tuning and Training
 
-AgriAssist-LLM was fine-tuned using a custom dataset created in the Alpaca Instruct Format. The dataset covers detailed plant disease information tailored to the Indian context and includes samples for:
+AgriLlama was fine-tuned using a custom dataset created in the Alpaca Instruct Format. The dataset covers detailed plant disease information tailored to the Indian context and includes samples for:
 
 - **Sugarcane:** Bacterial Blight, Healthy, Red Rot
 - **Maize:** Blight, Common Rust, Gray Leaf Spot, Healthy
@@ -143,5 +143,5 @@ For questions or suggestions, please open an issue in the repository or contact 
 
 ---
 
-Happy farming with AgriAssist-LLM!
+Happy farming with AgriLlama!
 
